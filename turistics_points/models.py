@@ -9,7 +9,7 @@ class TuristicPoint(models.Model):
     approval = models.BooleanField(default=False)
     equipments = models.ManyToManyField(Equipment, related_name="Turistic_Point", blank=True)
     comments = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="Turistic_Point") 
-    localizations = models.ForeignKey(Localization, on_delete=models.CASCADE, related_name="Turustuc_Points")   
+    localizations = models.ForeignKey(Localization, on_delete=models.CASCADE, related_name="Turustuc_Points", null=True, blank=True)   
     
     def __str__(self) -> str:
         return self.name
