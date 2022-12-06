@@ -19,10 +19,16 @@ from rest_framework import routers
 from django.conf.urls import include
 from turistics_points.views import TuristicPointView
 from equipments.views import EquipmentView
+from assessments.views import AssessmentView
+from comments.views import CommentView
+from localizations.views import LocalizationView
 
 router = routers.DefaultRouter()
 router.register(r'pontosturisticos',TuristicPointView)
 router.register(r'equipamentos', EquipmentView)
+router.register(r'avaliacoes', AssessmentView)
+router.register(r'comentarios', CommentView)
+router.register(r'localizacoes', LocalizationView)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
