@@ -24,7 +24,7 @@ from comments.views import CommentView
 from localizations.views import LocalizationView
 
 router = routers.DefaultRouter()
-router.register(r'pontosturisticos',TuristicPointView)
+router.register(r'pontosturisticos',TuristicPointView, basename = "TuristicPoint")
 router.register(r'equipamentos', EquipmentView)
 router.register(r'avaliacoes', AssessmentView)
 router.register(r'comentarios', CommentView)
