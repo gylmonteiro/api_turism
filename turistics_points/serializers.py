@@ -5,7 +5,7 @@ from .models import TuristicPoint
 class TuristicPointSerializer(ModelSerializer):
     class Meta:
         model = TuristicPoint
-        fields = ('id', 'name', 'description')
+        fields = ('id', 'name', 'description', 'photo')
         
         # fields = "__all__" 
         '''
