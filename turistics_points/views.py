@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from .models import TuristicPoint
 from .serializers import TuristicPointSerializer
 from rest_framework.decorators import action
+import requests
+import json
 
 class TuristicPointView(ModelViewSet):
     # queryset = TuristicPoint.objects.all()
@@ -11,8 +13,16 @@ class TuristicPointView(ModelViewSet):
         return TuristicPoint.objects.filter(approval = True)
 
     def list(self, request, *args, **kwargs):
-        
-        return super(TuristicPointView, self).list(request, *args, **kwargs)
+        try:
+            date = requests.get("https://cdn.apicep.com/file/apicep/59650-000.json")
+            date_json = json.loads(date.content)
+            print(date_json)
+            return Response(date_json)
+        except:
+            return Response({"Ola": "Passei direto"})
+            # super(TuristicPointView, self).list(request, *args, **kwargs)
+
+
 
     def create(self, request, *args, **kwargs):
         # print (request.data)
