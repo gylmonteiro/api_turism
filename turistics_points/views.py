@@ -3,12 +3,15 @@ from rest_framework.response import Response
 from .models import TuristicPoint
 from .serializers import TuristicPointSerializer
 from rest_framework.decorators import action
+from rest_framework import filters
 import requests
 import json
 
 class TuristicPointView(ModelViewSet):
-    # queryset = TuristicPoint.objects.all()
+    queryset = TuristicPoint.objects.all()
     serializer_class = TuristicPointSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'approval']
     def get_queryset(self):
         
         try:

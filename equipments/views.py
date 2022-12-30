@@ -6,3 +6,4 @@ from .serializers import EquipmentSerializer
 class EquipmentView(ModelViewSet):
     queryset = Equipment.objects.all()
     serializer_class = EquipmentSerializer
+    filterset_fields = ["name", "approval"]
