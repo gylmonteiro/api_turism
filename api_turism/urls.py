@@ -22,6 +22,7 @@ from equipments.views import EquipmentView
 from assessments.views import AssessmentView
 from comments.views import CommentView
 from localizations.views import LocalizationView
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.DefaultRouter()
 router.register(r'pontosturisticos',TuristicPointView, basename = "TuristicPoint")
@@ -32,5 +33,6 @@ router.register(r'localizacoes', LocalizationView)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(router.urls))
+    path("", include(router.urls)),
+    path("login/", (obtain_auth_token)),
 ]
