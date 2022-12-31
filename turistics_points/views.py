@@ -12,6 +12,7 @@ class TuristicPointView(ModelViewSet):
     serializer_class = TuristicPointSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'approval']
+    lookup_field = "name"
     def get_queryset(self):
         
         try:
