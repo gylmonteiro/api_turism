@@ -4,15 +4,24 @@ from .models import TuristicPoint
 from .serializers import TuristicPointSerializer
 from rest_framework.decorators import action
 from rest_framework import filters
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 import requests
 import json
 
 class TuristicPointView(ModelViewSet):
     queryset = TuristicPoint.objects.all()
     serializer_class = TuristicPointSerializer
+
+    # filtros 
     filter_backends = [filters.SearchFilter]
     search_fields = ['name', 'approval']
-    lookup_field = "name"
+    # lookup_field = "name"
+
+    # permissões
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+    
     def get_queryset(self):
         
         try:
